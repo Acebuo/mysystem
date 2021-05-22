@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    姓名<input type="text" id="name"><br />
+    聊天內容<input id="content"><br />
+    <div id='show'></div>
+
+
+
+
+
+
+
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-analytics.js"></script>
+    <!-- database -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-database.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+            apiKey: "AIzaSyAryFjR1OAuNMS0zxYckKQKOudrDepJXY8",
+            authDomain: "todolist-4bfba.firebaseapp.com",
+            databaseURL: "https://todolist-4bfba-default-rtdb.firebaseio.com",
+            projectId: "todolist-4bfba",
+            storageBucket: "todolist-4bfba.appspot.com",
+            messagingSenderId: "989889677348",
+            appId: "1:989889677348:web:50b8b241dca97011bef0b1",
+            measurementId: "G-GH08XXYFXP"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+        var db = firebase.database().ref();
+        var content = document.getElementById('content');
+        var btn = document.getElementById('btn');
+        var ms = new Date().getTime();
+        content.addEventListener('keydown', function(e){
+            if(e.keyCode == 13){
+                send();
+            }
+        });
+        function send() {
+            var name = document.getElementById('name');
+            let date = new Date();
+            let h = date.getHours();
+            let m = date.getMinutes();
+            let s = date.getSeconds();
+            if(h<10){
+                h = '0'+h;
+            }
+            if(m<10){
+                m = '0'+m;
+            }
+            if(s<10){
+                s ='0'+s; 
+            }
+            let now = h+':'+m+':'+s
+
+            let postData = {
+                id:'id'+ms,
+                time:now,
+                name: name.value,
+                content: content.value,
+
+            }
+            db.push(postData);
+            content.value = '';
+            show();
+        }
+        function show(){
+            var show = document.getElementById('show')
+            db.on('value',function(snapshot){
+                let str = '';
+                for(let i in snapshot.val()){
+                    let timecode = snapshot.val()[i].time;
+                    let namecode = snapshot.val()[i].name;
+                    let contentcode = snapshot.val()[i].content;
+                    let message = `<div><p>${timecode} ${namecode}說:${contentcode}</p></div>`
+                    str+=message;
+                    
+                }
+                show.innerHTML = str;
+                console.log(snapshot.val())
+            })
+        }
+
+    </script>
+</body>
+
+</html>

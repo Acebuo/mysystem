@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>game</title>
+</head>
+<body>
+    <section>
+
+    </section>
+
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+
+    <!-- Cloud Storage -->
+<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-storage.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyAryFjR1OAuNMS0zxYckKQKOudrDepJXY8",
+    authDomain: "todolist-4bfba.firebaseapp.com",
+    databaseURL: "https://todolist-4bfba-default-rtdb.firebaseio.com",
+    projectId: "todolist-4bfba",
+    storageBucket: "todolist-4bfba.appspot.com",
+    messagingSenderId: "989889677348",
+    appId: "1:989889677348:web:3bd8a1b90ed4c3f7bef0b1",
+    measurementId: "G-F1H0EMW1PN"
+  };
+  // Initialize Firebase
+  let db = firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+  const fileRef = firebase.storage().ref(fullPath)
+  console.log(fileRef)
+
+    // .ref() 指向已存在 storage 中的檔案位置後 可以透過 getDownloadURL 取得連結
+    fileRef.getDownloadURL().then(function (url) {
+        console.log(url) 
+    })
+  </script>
+</body>
+</html>
