@@ -21,11 +21,14 @@
             top: 0;
             z-index: -1;
         }
+        .none{
+            display:none
+        }
     </style>
 </head>
 
-<body class="bg-light" id="digimon">
-    <div class="container">
+<body class="bg-light" >
+    <div class="container" id="digimon">
         <div class="row justify-content-md-center ">
             <div class="card text-white bg-dark m-5 shadow  " style="max-width: 18rem;opacity: 0.9;">
                 <div class="card-header">My Login</div>
@@ -53,6 +56,8 @@
                     </form>
                 </div>
             </div>
+        </div>  
+    </div>      
             <!-- Modal -->
             <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
                 aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -65,6 +70,10 @@
                         <div class="modal-body text-dark">
                             <form>
                                 <div class="mb-3">
+                                    <label for="exampleInputname" class="form-label">使用者名稱</label>
+                                    <input type="text" class="form-control" id="registername">
+                                </div>
+                                <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Email address</label>
                                     <input type="email" class="form-control" id="registerEmail"
                                         aria-describedby="emailHelp">
@@ -75,6 +84,7 @@
                                     <label for="exampleInputPassword1" class="form-label">Password</label>
                                     <input type="password" class="form-control" id="registerPassword">
                                 </div>
+                                
                                 <div class="mb-3 form-check">
                                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                     <label class="form-check-label" for="exampleCheck1">我不是阿宅</label>
@@ -88,7 +98,12 @@
                     </div>
                 </div>
             </div>
-        </div>
+            <div id="second" class="none">
+                <div id="user-name"></div>
+                <div id="user-mail"></div>
+                <div id="user-id"></div>
+
+            </div>
 
 
 
