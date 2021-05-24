@@ -9,12 +9,16 @@ clickedcard = this;
 setTimeout(() => {
     
     
-    // 找到翻開的圖片
-    let pic= document.querySelector('.flip .front-face')
-    console.log(pic)
-    let pp =  document.getElementById('test')
-     pp.outerHTML = pic
+    // 找到翻開的圖片,印在div上
+    //let pp =  document.getElementById('print');
+    //pp.appendChild(clickedcard);
+
+
+    //互動modal
+    var myModal = new bootstrap.Modal(document.getElementById('test'), )
+    myModal.show();
     
+
         
     }, 2000);
 
